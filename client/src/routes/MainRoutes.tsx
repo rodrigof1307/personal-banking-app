@@ -14,7 +14,7 @@ export const MainRoutes = () => {
       screenOptions={{headerShown: false}}>
       <Stack.Screen name="InitialPage" component={InitialPage} />
       <Stack.Screen name="Login" component={Login} />
-      <Stack.Screen name="Sign Up" component={Register} />
+      <Stack.Screen name="Register" component={Register} />
       <Stack.Screen name="BottomTab" component={BottomTabRoutes} />
     </Stack.Navigator>
   );

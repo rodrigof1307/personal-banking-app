@@ -1,25 +1,39 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import {Button} from '../components/Button';
-import axios from 'axios';
-import {useQuery} from 'react-query';
+import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import {colors} from '../consts/colors';
+import {fonts} from '../consts/fonts';
+import Button from '../components/Button';
+import {useNavigation} from '@react-navigation/core';
+import {StackNavigationProp} from '@react-navigation/stack';
 
 export const InitialPage = () => {
-  const {data} = useQuery('test', async () => {
-    return axios
-      .get('https://jsonplaceholder.typicode.com/posts/1/')
-      .then(res => {
-        return JSON.stringify(res.data);
-      });
-  });
+  const navigation = useNavigation<StackNavigationProp<NavigationParamsList>>();
 
-  console.log(data);
+  const handleLogin = () => {
+    navigation.navigate('Login');
+  };
+
+  const handleRegister = () => {
+    navigation.navigate('Register');
+  };
 
   return (
-    <View style={styles.background}>
-      <Text style={styles.text}>Banking Made Easy</Text>
-    </View>
+    <SafeAreaView style={styles.background}>
+      <Text style={styles.title}>Banking Made Easy</Text>
+      <Text style={styles.description}>
+        Welcome to the future of finance at Swift Bank. Manage your finances
+        with ease anywhere at any time.
+      </Text>
+      <View style={styles.buttonContainer}>
+        <Button title="Login" size="full" onPress={handleLogin} />
+        <Button
+          title="Register"
+          size="full"
+          scheme="secondary"
+          onPress={handleRegister}
+        />
+      </View>
+    </SafeAreaView>
   );
 };
 
@@ -30,12 +44,36 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: colors.secondary,
+    backgroundColor: 'white',
   },
 
-  text: {
-    color: colors.accent,
-    fontSize: 24,
-    fontWeight: '600',
+  buttonContainer: {
+    width: '90%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 16,
+  },
+
+  title: {
+    width: '90%',
+
+    color: colors.primary,
+    fontFamily: fonts.bold,
+    fontSize: 32,
+    textAlign: 'left',
+  },
+
+  description: {
+    width: '90%',
+
+    marginTop: 10,
+    marginBottom: 40,
+
+    color: colors.primary,
+    fontFamily: fonts.regular,
+    fontSize: 18,
+    textAlign: 'left',
   },
 });

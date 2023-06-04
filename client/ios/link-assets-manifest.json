@@ -1,0 +1,33 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/Assistant-Bold.ttf",
+      "sha1": "bc0cbf687dd64b28f4fd5b4a0b8de50bac9fab71"
+    },
+    {
+      "path": "src/assets/fonts/Assistant-ExtraBold.ttf",
+      "sha1": "b5ffcced9bab78fb7fbe8bfa1e2229f501dfaa48"
+    },
+    {
+      "path": "src/assets/fonts/Assistant-ExtraLight.ttf",
+      "sha1": "924e46a771b47d8e15ae8b81646431e2a30cfc5e"
+    },
+    {
+      "path": "src/assets/fonts/Assistant-Light.ttf",
+      "sha1": "71e87fe9403fb86a9ec128594d59705ddd242ba0"
+    },
+    {
+      "path": "src/assets/fonts/Assistant-Medium.ttf",
+      "sha1": "8b533cdcda8dd42032c2ee962d76988c554d10c3"
+    },
+    {
+      "path": "src/assets/fonts/Assistant-Regular.ttf",
+      "sha1": "c9f93188102aff986e127fd71b48c6e6ef1cf538"
+    },
+    {
+      "path": "src/assets/fonts/Assistant-SemiBold.ttf",
+      "sha1": "451921324281ffcce6072e6c8d0656dd1165528e"
+    }
+  ]
+}

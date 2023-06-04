@@ -6,4 +6,5 @@ export const fonts = {
   light: 'Assistant-Light',
   medium: 'Assistant-Medium',
   semiBold: 'Assistant-SemiBold',
+  regular: 'Assistant-Regular',
 };

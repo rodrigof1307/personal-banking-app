@@ -14,6 +14,13 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-client-clientTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-client-clientTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		1828372B5ABC4049B995563E /* Assistant-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E8D8F743AB1A411EB060B669 /* Assistant-Bold.ttf */; };
+		429F972B652E4FEDA5845068 /* Assistant-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2F25DB0C9EF84472B51775D5 /* Assistant-ExtraBold.ttf */; };
+		74FA9C486910424E83218C9B /* Assistant-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 32909CE017894DB0846213DC /* Assistant-ExtraLight.ttf */; };
+		C575262D6DD040CEB6F1E9D9 /* Assistant-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C6A696BCDF04C63B19AB1F0 /* Assistant-Light.ttf */; };
+		5289B4FB6D1242D7A44382B1 /* Assistant-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D0ADA9829084EB2AE38070B /* Assistant-Medium.ttf */; };
+		C00422A42D384FC6B9FE44C8 /* Assistant-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F8A9FAEF67DD457A82679D3A /* Assistant-Regular.ttf */; };
+		45CFEE9E56ED425BBCD92CE1 /* Assistant-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3BB16369B1EA4E77AEB7C544 /* Assistant-SemiBold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +51,13 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = client/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-client-clientTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-client-clientTests.release.xcconfig"; path = "Target Support Files/Pods-client-clientTests/Pods-client-clientTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		E8D8F743AB1A411EB060B669 /* Assistant-Bold.ttf */ = {isa = PBXFileReference; name = "Assistant-Bold.ttf"; path = "../src/assets/fonts/Assistant-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		2F25DB0C9EF84472B51775D5 /* Assistant-ExtraBold.ttf */ = {isa = PBXFileReference; name = "Assistant-ExtraBold.ttf"; path = "../src/assets/fonts/Assistant-ExtraBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		32909CE017894DB0846213DC /* Assistant-ExtraLight.ttf */ = {isa = PBXFileReference; name = "Assistant-ExtraLight.ttf"; path = "../src/assets/fonts/Assistant-ExtraLight.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		9C6A696BCDF04C63B19AB1F0 /* Assistant-Light.ttf */ = {isa = PBXFileReference; name = "Assistant-Light.ttf"; path = "../src/assets/fonts/Assistant-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		3D0ADA9829084EB2AE38070B /* Assistant-Medium.ttf */ = {isa = PBXFileReference; name = "Assistant-Medium.ttf"; path = "../src/assets/fonts/Assistant-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F8A9FAEF67DD457A82679D3A /* Assistant-Regular.ttf */ = {isa = PBXFileReference; name = "Assistant-Regular.ttf"; path = "../src/assets/fonts/Assistant-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		3BB16369B1EA4E77AEB7C544 /* Assistant-SemiBold.ttf */ = {isa = PBXFileReference; name = "Assistant-SemiBold.ttf"; path = "../src/assets/fonts/Assistant-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +136,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				AF2F5ED8E5CF483DA74D2343 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -147,6 +162,21 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
+		};
+		AF2F5ED8E5CF483DA74D2343 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				E8D8F743AB1A411EB060B669 /* Assistant-Bold.ttf */,
+				2F25DB0C9EF84472B51775D5 /* Assistant-ExtraBold.ttf */,
+				32909CE017894DB0846213DC /* Assistant-ExtraLight.ttf */,
+				9C6A696BCDF04C63B19AB1F0 /* Assistant-Light.ttf */,
+				3D0ADA9829084EB2AE38070B /* Assistant-Medium.ttf */,
+				F8A9FAEF67DD457A82679D3A /* Assistant-Regular.ttf */,
+				3BB16369B1EA4E77AEB7C544 /* Assistant-SemiBold.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -244,6 +274,13 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				1828372B5ABC4049B995563E /* Assistant-Bold.ttf in Resources */,
+				429F972B652E4FEDA5845068 /* Assistant-ExtraBold.ttf in Resources */,
+				74FA9C486910424E83218C9B /* Assistant-ExtraLight.ttf in Resources */,
+				C575262D6DD040CEB6F1E9D9 /* Assistant-Light.ttf in Resources */,
+				5289B4FB6D1242D7A44382B1 /* Assistant-Medium.ttf in Resources */,
+				C00422A42D384FC6B9FE44C8 /* Assistant-Regular.ttf in Resources */,
+				45CFEE9E56ED425BBCD92CE1 /* Assistant-SemiBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
