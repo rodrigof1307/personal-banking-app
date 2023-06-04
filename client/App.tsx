@@ -6,14 +6,10 @@
  */
 
 import React from 'react';
-import {
-  SafeAreaView,
-  StatusBar,
-  StyleSheet,
-  useColorScheme,
-} from 'react-native';
+import {StatusBar, useColorScheme} from 'react-native';
 import {QueryClient, QueryClientProvider} from 'react-query';
-import {InitialPage} from './pages/InitialPage';
+import {MainRoutes} from './src/routes/MainRoutes';
+import {NavigationContainer} from '@react-navigation/native';
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -21,29 +17,12 @@ function App(): JSX.Element {
   const queryClient = new QueryClient();
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <SafeAreaView style={styles.background}>
+    <NavigationContainer>
+      <QueryClientProvider client={queryClient}>
         <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-        <InitialPage />
-      </SafeAreaView>
-    </QueryClientProvider>
+        <MainRoutes />
+      </QueryClientProvider>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  background: {
-    flex: 1,
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-
-  text: {
-    color: 'red',
-    fontSize: 24,
-    fontWeight: '600',
-  },
-});
-
 export default App;
