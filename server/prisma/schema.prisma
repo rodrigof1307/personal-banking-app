@@ -1,0 +1,46 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model UserAccount {
+  id                   Int           @id @default(autoincrement())
+  name                 String
+  phone                String
+  email                String        @unique
+  passwordHash         String
+  occupation           String?
+  balance              Float         @default(0.0)
+  createdAt            DateTime      @default(now())
+  updatedAt            DateTime      @updatedAt
+  transactionsSent     Transaction[] @relation("transactionsSent")
+  transactionsReceived Transaction[] @relation("transactionsReceived")
+}
+
+model Transaction {
+  id           Int               @id @default(autoincrement())
+  senderID     Int? // is null if the sender is an iban
+  receiverID   Int? // is null if the receiver is an iban
+  receiverIBAN String? // is null if the receiver is an user
+  status       TransactionStatus
+  amount       Float
+  createdAt    DateTime          @default(now())
+  updatedAt    DateTime          @updatedAt
+  sender       UserAccount?      @relation("transactionsSent", fields: [senderID], references: [id])
+  receiver     UserAccount?      @relation("transactionsReceived", fields: [receiverID], references: [id])
+
+  @@index([senderID])
+}
+
+enum TransactionStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+}

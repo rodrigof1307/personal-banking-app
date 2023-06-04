@@ -32,7 +32,7 @@ Follow the next steps to run the project
 
 ### Prerequisites
 
-You must have node, npm and yarn installed on your machine
+You must have node, npm, yarn and docker installed on your machine
 
 ### Running the project
 
