@@ -7,7 +7,7 @@ export const BottomTabRoutes = () => {
   const Tab = createBottomTabNavigator();
 
   return (
-    <Tab.Navigator>
+    <Tab.Navigator screenOptions={{headerShown: false}}>
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="Transactions" component={Transactions} />
     </Tab.Navigator>
