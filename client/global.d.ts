@@ -27,3 +27,5 @@ type Transaction = {
   createdAt: Date;
   updatedAt: Date;
 };
+
+type TransactionStatus = 'ACCEPTED' | 'REJECTED' | 'PENDING';

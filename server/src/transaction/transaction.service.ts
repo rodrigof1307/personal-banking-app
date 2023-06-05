@@ -145,20 +145,26 @@ export class TransactionService {
     return await this.prisma.transaction.findMany();
   }
 
-  async getTransactions(accountID: number, type: 'SENT' | 'RECEIVED') {
+  async getAllUserTransactions(accountID: number) {
     await this.getUser(accountID);
-
-    if (type === 'SENT') {
-      return await this.prisma.transaction.findMany({
-        where: {
-          senderID: accountID,
-        },
-      });
-    }
 
     return await this.prisma.transaction.findMany({
       where: {
-        receiverID: accountID,
+        OR: [
+          {
+            senderID: accountID,
+          },
+          {
+            receiverID: accountID,
+          },
+        ],
+      },
+      include: {
+        sender: true,
+        receiver: true,
+      },
+      orderBy: {
+        createdAt: 'desc',
       },
     });
   }

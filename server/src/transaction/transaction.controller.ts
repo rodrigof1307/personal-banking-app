@@ -34,18 +34,13 @@ export class TransactionController {
     return this.transactionsService.rejectTransaction(id);
   }
 
-  @Get()
+  @Get('all')
   async getAllTransactions() {
     return this.transactionsService.getAllTransactions();
   }
 
-  @Get('sent/:id')
-  async getSentTransactions(@Param('id', ParseIntPipe) id: number) {
-    return this.transactionsService.getTransactions(id, 'SENT');
-  }
-
-  @Get('received/:id')
-  async getReceivedTransactions(@Param('id', ParseIntPipe) id: number) {
-    return this.transactionsService.getTransactions(id, 'RECEIVED');
+  @Get('all/:id')
+  async getAllUserTransactions(@Param('id', ParseIntPipe) id: number) {
+    return this.transactionsService.getAllUserTransactions(id);
   }
 }
