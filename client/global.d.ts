@@ -3,3 +3,24 @@ type NavigationParamsList = {
   Register: undefined;
   BottomTab: undefined;
 };
+
+type UserAccount = {
+  id: number;
+  name: string;
+  email: string;
+  passwordHash: string;
+  balance: number;
+  createdAt: Date;
+  updatedAt: Date;
+};
+
+type Transaction = {
+  id: number;
+  senderID: number | null;
+  receiverID: number | null;
+  receiverIBAN: string | null;
+  status: TransactionStatus;
+  amount: number;
+  createdAt: Date;
+  updatedAt: Date;
+};

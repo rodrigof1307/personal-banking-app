@@ -16,8 +16,6 @@ export class AuthService {
           email: dto.email,
           passwordHash: hash,
           name: dto.name,
-          phone: dto.phone,
-          occupation: dto.occupation,
         },
       });
 

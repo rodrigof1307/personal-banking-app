@@ -1,11 +1,14 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {colors} from '../consts/colors';
+import {UserContext} from '../context/UserContext';
 
 export const Home = () => {
+  const {user} = React.useContext(UserContext);
+
   return (
     <View style={styles.background}>
-      <Text>Home</Text>
+      <Text>{user?.balance}</Text>
     </View>
   );
 };

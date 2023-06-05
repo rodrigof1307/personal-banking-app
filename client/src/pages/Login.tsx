@@ -1,11 +1,19 @@
-import React from 'react';
-import {View, TextInput, StyleSheet} from 'react-native';
+import React, {useContext} from 'react';
+import {
+  KeyboardAvoidingView,
+  TextInput,
+  StyleSheet,
+  Text,
+  Alert,
+} from 'react-native';
 import {useForm, Controller} from 'react-hook-form';
 import Button from '../components/Button';
 import {colors} from '../consts/colors';
 import axios from 'axios';
 import {useNavigation} from '@react-navigation/core';
 import {StackNavigationProp} from '@react-navigation/stack';
+import {GoBackButton} from '../components/GoBackButton';
+import {UserContext} from '../context/UserContext';
 
 type FormData = {
   email: string;
@@ -20,6 +28,7 @@ export const Login = () => {
   } = useForm<FormData>();
 
   const navigation = useNavigation<StackNavigationProp<NavigationParamsList>>();
+  const {setUser} = useContext(UserContext);
 
   const onSubmit = async (data: FormData) => {
     try {
@@ -27,13 +36,16 @@ export const Login = () => {
       if (res.status === 200) {
         navigation.navigate('BottomTab');
       }
+      console.log(res.data);
+      setUser(res.data);
     } catch (error) {
-      console.log(error);
+      Alert.alert('Error', 'Wrong Credentials');
     }
   };
 
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView style={styles.container} behavior={'height'}>
+      <GoBackButton />
       <Controller
         control={control}
         render={({field: {onChange, onBlur, value}}) => (
@@ -49,9 +61,13 @@ export const Login = () => {
           />
         )}
         name="email"
-        rules={{required: true, pattern: /^\S+@\S+$/i}}
+        rules={{
+          required: 'This field is required',
+          pattern: {value: /^\S+@\S+$/i, message: 'Invalid email'},
+        }}
         defaultValue=""
       />
+      <Text style={styles.errorText}>{errors.email?.message ?? ''}</Text>
       <Controller
         control={control}
         render={({field: {onChange, onBlur, value}}) => (
@@ -66,12 +82,13 @@ export const Login = () => {
           />
         )}
         name="password"
-        rules={{required: true}}
+        rules={{required: 'This field is required'}}
         defaultValue=""
       />
+      <Text style={styles.errorText}>{errors.password?.message ?? ''}</Text>
 
-      <Button title="Submit" onPress={handleSubmit(onSubmit)} />
-    </View>
+      <Button title="Submit" size="full" onPress={handleSubmit(onSubmit)} />
+    </KeyboardAvoidingView>
   );
 };
 
@@ -80,6 +97,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     padding: 20,
+    backgroundColor: 'white',
   },
   input: {
     height: 50,
@@ -87,10 +105,15 @@ const styles = StyleSheet.create({
     borderColor: colors.accent,
     borderRadius: 5,
     padding: 10,
-    marginBottom: 10,
     color: colors.accent,
   },
   inputError: {
     borderColor: 'red',
+  },
+  errorText: {
+    marginTop: 4,
+    marginBottom: 10,
+    color: 'red',
+    fontSize: 14,
   },
 });

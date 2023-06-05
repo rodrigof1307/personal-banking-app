@@ -1,11 +1,19 @@
 import React from 'react';
-import {View, TextInput, StyleSheet} from 'react-native';
+import {
+  TextInput,
+  StyleSheet,
+  Text,
+  KeyboardAvoidingView,
+  Alert,
+} from 'react-native';
 import {useForm, Controller} from 'react-hook-form';
 import Button from '../components/Button';
 import {colors} from '../consts/colors';
 import axios from 'axios';
 import {useNavigation} from '@react-navigation/core';
 import {StackNavigationProp} from '@react-navigation/stack';
+import {GoBackButton} from '../components/GoBackButton';
+import {UserContext} from '../context/UserContext';
 
 type FormData = {
   name: string;
@@ -25,6 +33,7 @@ export const Register = () => {
   } = useForm<FormData>();
 
   const navigation = useNavigation<StackNavigationProp<NavigationParamsList>>();
+  const {setUser} = React.useContext(UserContext);
 
   const password = watch('password');
 
@@ -33,16 +42,24 @@ export const Register = () => {
     const {confirmPassword, ...rest} = data;
     try {
       const res = await axios.post('http://localhost:3333/auth/register', rest);
-      if (res.status === 200) {
+      console.log(res.status);
+      if (res.status === 201) {
         navigation.navigate('BottomTab');
       }
+      setUser(res.data);
     } catch (error) {
       console.log(error);
+      Alert.alert('Error', 'Registration failed');
     }
   };
 
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView
+      style={styles.container}
+      behavior={'height'}
+      keyboardVerticalOffset={-60}>
+      <GoBackButton />
+
       <Controller
         control={control}
         render={({field: {onChange, onBlur, value}}) => (
@@ -55,41 +72,10 @@ export const Register = () => {
           />
         )}
         name="name"
-        rules={{required: true}}
+        rules={{required: 'This field is required'}}
         defaultValue=""
       />
-
-      <Controller
-        control={control}
-        render={({field: {onChange, onBlur, value}}) => (
-          <TextInput
-            style={[styles.input, errors.phone && styles.inputError]}
-            onBlur={onBlur}
-            onChangeText={onChange}
-            value={value}
-            placeholder="Phone"
-            keyboardType="phone-pad"
-          />
-        )}
-        name="phone"
-        rules={{required: true}}
-        defaultValue=""
-      />
-
-      <Controller
-        control={control}
-        render={({field: {onChange, onBlur, value}}) => (
-          <TextInput
-            style={styles.input}
-            onBlur={onBlur}
-            onChangeText={onChange}
-            value={value}
-            placeholder="Occupation (Optional)"
-          />
-        )}
-        name="occupation"
-        defaultValue=""
-      />
+      <Text style={styles.errorText}>{errors.name?.message ?? ''}</Text>
 
       <Controller
         control={control}
@@ -106,9 +92,13 @@ export const Register = () => {
           />
         )}
         name="email"
-        rules={{required: true, pattern: /^\S+@\S+$/i}}
+        rules={{
+          required: 'This field is required',
+          pattern: {value: /^\S+@\S+$/i, message: 'Invalid email'},
+        }}
         defaultValue=""
       />
+      <Text style={styles.errorText}>{errors.email?.message ?? ''}</Text>
 
       <Controller
         control={control}
@@ -124,9 +114,21 @@ export const Register = () => {
           />
         )}
         name="password"
-        rules={{required: true}}
+        rules={{
+          required: 'This field is required',
+          minLength: {
+            value: 8,
+            message: 'Password must be at least 8 characters long',
+          },
+          pattern: {
+            value: /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z\d]+$/,
+            message:
+              'Password must contain at least one uppercase letter, one lowercase letter, and one digit',
+          },
+        }}
         defaultValue=""
       />
+      <Text style={styles.errorText}>{errors.password?.message ?? ''}</Text>
 
       <Controller
         control={control}
@@ -142,14 +144,17 @@ export const Register = () => {
         )}
         name="confirmPassword"
         rules={{
-          required: true,
+          required: 'This field is required',
           validate: value => value === password || 'The passwords do not match',
         }}
         defaultValue=""
       />
+      <Text style={styles.errorText}>
+        {errors.confirmPassword?.message ?? ''}
+      </Text>
 
-      <Button title="Submit" onPress={handleSubmit(onSubmit)} />
-    </View>
+      <Button title="Submit" size="full" onPress={handleSubmit(onSubmit)} />
+    </KeyboardAvoidingView>
   );
 };
 
@@ -157,7 +162,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    padding: 20,
+    paddingHorizontal: 20,
+    paddingVertical: 0,
   },
   input: {
     height: 50,
@@ -170,6 +176,11 @@ const styles = StyleSheet.create({
   },
   inputError: {
     borderColor: 'red',
+  },
+  errorText: {
+    marginBottom: 10,
+    color: 'red',
+    fontSize: 14,
   },
 });
 

@@ -13,10 +13,8 @@ datasource db {
 model UserAccount {
   id                   Int           @id @default(autoincrement())
   name                 String
-  phone                String
   email                String        @unique
   passwordHash         String
-  occupation           String?
   balance              Float         @default(0.0)
   createdAt            DateTime      @default(now())
   updatedAt            DateTime      @updatedAt
