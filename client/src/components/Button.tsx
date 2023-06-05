@@ -21,7 +21,7 @@ const Button = ({
 }: ButtonProps) => {
   const backgroundColor =
     scheme === 'primary' ? colors.primaryButton : colors.secondaryButton;
-  const color = colors.primary;
+  const color = 'white';
 
   const buttonStyles = [styles.button, styles[size], {backgroundColor}];
 

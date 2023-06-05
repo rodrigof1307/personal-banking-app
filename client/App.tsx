@@ -8,7 +8,7 @@
 import React from 'react';
 import {StatusBar, useColorScheme} from 'react-native';
 import {QueryClient, QueryClientProvider} from 'react-query';
-import {MainRoutes} from './src/routes/MainRoutes';
+import {MainRoutes} from './src/routes/main.routes';
 import {NavigationContainer} from '@react-navigation/native';
 import {UserContext} from './src/context/UserContext';
 

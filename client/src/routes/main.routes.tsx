@@ -2,7 +2,7 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {Login} from '../pages/Login';
 import {Register} from '../pages/Register';
-import {BottomTabRoutes} from './BottomTabRoutes';
+import {BottomTabRoutes} from './tab.routes';
 import {InitialPage} from '../pages/InitialPage';
 
 export const MainRoutes = () => {

@@ -2,6 +2,8 @@ type NavigationParamsList = {
   Login: undefined;
   Register: undefined;
   BottomTab: undefined;
+  Deposit: undefined;
+  Transfer: undefined;
 };
 
 type UserAccount = {
