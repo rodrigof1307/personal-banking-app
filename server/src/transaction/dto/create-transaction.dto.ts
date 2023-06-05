@@ -1,4 +1,10 @@
-import { IsIBAN, IsNotEmpty, IsNumber, IsOptional } from 'class-validator';
+import {
+  IsEmail,
+  IsIBAN,
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+} from 'class-validator';
 
 export class CreateTransactionDto {
   @IsNumber()
@@ -6,8 +12,8 @@ export class CreateTransactionDto {
   senderID: number;
 
   @IsOptional()
-  @IsNumber()
-  receiverID?: number;
+  @IsEmail()
+  receiverEmail?: string;
 
   @IsOptional()
   @IsIBAN()

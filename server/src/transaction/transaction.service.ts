@@ -24,15 +24,15 @@ export class TransactionService {
   }
 
   async createTransaction(dto: CreateTransactionDto) {
-    const { senderID, receiverID, receiverIBAN, amount } = dto;
+    const { senderID, receiverEmail, receiverIBAN, amount } = dto;
 
-    if (receiverID && receiverIBAN) {
+    if (receiverEmail && receiverIBAN) {
       throw new ForbiddenException(
         'Cannot provide both recipientId and recipientIban',
       );
     }
 
-    if (!receiverID && !receiverIBAN) {
+    if (!receiverEmail && !receiverIBAN) {
       throw new ForbiddenException('No IBAN nor receipient provided');
     }
 
@@ -42,26 +42,26 @@ export class TransactionService {
       throw new ForbiddenException('Insufficient funds');
     }
 
-    if (receiverID) {
+    if (receiverEmail) {
       // Transactions to other users are settled immediately
 
-      const recipient = await this.prisma.userAccount.findUnique({
+      const receiver = await this.prisma.userAccount.findUnique({
         where: {
-          id: receiverID,
+          email: receiverEmail,
         },
       });
 
-      if (!recipient) {
-        throw new ForbiddenException('Recipient not found');
+      if (!receiver) {
+        throw new ForbiddenException('Receiver not found');
       }
 
       await this.changeBalance(senderID, user.balance - amount);
-      await this.changeBalance(receiverID, recipient.balance + amount);
+      await this.changeBalance(receiver.id, receiver.balance + amount);
 
       return this.prisma.transaction.create({
         data: {
           senderID,
-          receiverID,
+          receiverID: receiver.id,
           receiverIBAN,
           status: TransactionStatus.ACCEPTED,
           amount,
@@ -75,7 +75,6 @@ export class TransactionService {
       return this.prisma.transaction.create({
         data: {
           senderID,
-          receiverID,
           receiverIBAN,
           status: TransactionStatus.PENDING,
           amount,

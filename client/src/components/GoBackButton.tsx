@@ -6,7 +6,11 @@ import {StackNavigationProp} from '@react-navigation/stack';
 import {colors} from '../consts/colors';
 import {getStatusBarHeight} from 'react-native-iphone-x-helper';
 
-export const GoBackButton = () => {
+type GoBackButtonProps = {
+  onPress?: () => void;
+};
+
+export const GoBackButton = ({onPress}: GoBackButtonProps) => {
   const navigation = useNavigation<StackNavigationProp<NavigationParamsList>>();
 
   const handleGoBack = () => {
@@ -14,7 +18,9 @@ export const GoBackButton = () => {
   };
 
   return (
-    <TouchableOpacity onPress={handleGoBack} style={styles.goBack}>
+    <TouchableOpacity
+      onPress={onPress ? onPress : handleGoBack}
+      style={styles.goBack}>
       <Icon name="chevron-left" size={40} color={colors.primary} />
     </TouchableOpacity>
   );

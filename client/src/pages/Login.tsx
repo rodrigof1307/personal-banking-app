@@ -35,9 +35,8 @@ export const Login = () => {
       const res = await axios.post('http://localhost:3333/auth/login', data);
       if (res.status === 200) {
         navigation.navigate('BottomTab');
+        setUser(res.data);
       }
-      console.log(res.data);
-      setUser(res.data);
     } catch (error) {
       Alert.alert('Error', 'Wrong Credentials');
     }

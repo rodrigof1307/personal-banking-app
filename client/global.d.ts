@@ -4,6 +4,7 @@ type NavigationParamsList = {
   BottomTab: undefined;
   Deposit: undefined;
   Transfer: undefined;
+  Home: undefined;
 };
 
 type UserAccount = {

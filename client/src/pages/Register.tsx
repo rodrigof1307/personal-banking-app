@@ -42,11 +42,10 @@ export const Register = () => {
     const {confirmPassword, ...rest} = data;
     try {
       const res = await axios.post('http://localhost:3333/auth/register', rest);
-      console.log(res.status);
       if (res.status === 201) {
         navigation.navigate('BottomTab');
+        setUser(res.data);
       }
-      setUser(res.data);
     } catch (error) {
       console.log(error);
       Alert.alert('Error', 'Registration failed');
