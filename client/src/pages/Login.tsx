@@ -24,6 +24,7 @@ export const Login = () => {
   const {
     control,
     handleSubmit,
+    reset,
     formState: {errors},
   } = useForm<FormData>();
 
@@ -36,6 +37,7 @@ export const Login = () => {
       if (res.status === 200) {
         navigation.navigate('BottomTab');
         setUser(res.data);
+        reset();
       }
     } catch (error) {
       Alert.alert('Error', 'Wrong Credentials');

@@ -34,6 +34,7 @@ export const Transfer = () => {
     control,
     handleSubmit,
     formState: {errors},
+    reset,
   } = useForm<FormData>();
 
   const carousel = useRef<Carousel<any>>(null);
@@ -62,6 +63,7 @@ export const Transfer = () => {
         );
         setUser(newUser.data);
         navigation.navigate('Home');
+        reset();
       }
     } catch (error) {
       console.log(error);

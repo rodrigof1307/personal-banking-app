@@ -20,6 +20,7 @@ export const Deposit = () => {
     control,
     handleSubmit,
     formState: {errors},
+    reset,
   } = useForm<FormData>();
   const navigation = useNavigation<StackNavigationProp<NavigationParamsList>>();
 
@@ -39,6 +40,7 @@ export const Deposit = () => {
         );
         setUser(newUser.data);
         navigation.navigate('Home');
+        reset();
       }
     } catch (error) {
       console.log(error);

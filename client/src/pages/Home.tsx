@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import Button from '../components/Button';
 import {colors} from '../consts/colors';
 import {UserContext} from '../context/UserContext';
@@ -8,9 +8,10 @@ import {getStatusBarHeight} from 'react-native-iphone-x-helper';
 import {useCountUp} from 'use-count-up';
 import {useNavigation} from '@react-navigation/core';
 import {StackNavigationProp} from '@react-navigation/stack';
+import Icon from 'react-native-vector-icons/Entypo';
 
 export const Home = () => {
-  const {user} = React.useContext(UserContext);
+  const {user, setUser} = React.useContext(UserContext);
 
   const navigation = useNavigation<StackNavigationProp<NavigationParamsList>>();
 
@@ -30,11 +31,21 @@ export const Home = () => {
     navigation.navigate('Transfer');
   };
 
+  const handleLogout = () => {
+    setUser(undefined);
+    navigation.navigate('Login');
+  };
+
   return (
     <View style={styles.background}>
-      <Text style={styles.text}>
-        Hi <Text style={{color: colors.accent}}>{user?.name}</Text>
-      </Text>
+      <View style={styles.header}>
+        <Text style={styles.text}>
+          Hi <Text style={{color: colors.accent}}>{user?.name}</Text>
+        </Text>
+        <TouchableOpacity onPress={handleLogout} activeOpacity={0.75}>
+          <Icon name={'log-out'} size={24} color={'red'} />
+        </TouchableOpacity>
+      </View>
       <View style={styles.balanceWrapper}>
         <Text style={styles.balanceLabel}>Balance</Text>
         <Text style={styles.balance}>{balanceCountUp + ' €'}</Text>
@@ -58,6 +69,17 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     backgroundColor: 'white',
+  },
+
+  header: {
+    width: '100%',
+
+    paddingHorizontal: 20,
+
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
 
   text: {

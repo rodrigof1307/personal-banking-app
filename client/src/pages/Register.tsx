@@ -30,6 +30,7 @@ export const Register = () => {
     handleSubmit,
     formState: {errors},
     watch,
+    reset,
   } = useForm<FormData>();
 
   const navigation = useNavigation<StackNavigationProp<NavigationParamsList>>();
@@ -45,6 +46,7 @@ export const Register = () => {
       if (res.status === 201) {
         navigation.navigate('BottomTab');
         setUser(res.data);
+        reset();
       }
     } catch (error) {
       console.log(error);
