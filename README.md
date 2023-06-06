@@ -16,6 +16,8 @@ The project's app was built using:
 
 - React Native
 - TypeScript
+- React-Hook-Form
+- React-Query
 
 The project's backend was built using:
 
@@ -36,7 +38,45 @@ You must have node, npm, yarn and docker installed on your machine
 
 ### Running the project
 
-TODO
+First you need to put the server up and running. To do that, follow the next steps:
+1. Go to the server folder
+```sh
+cd server
+```
+2. Install the dependencies
+```sh
+yarn
+```
+3. Start the database container
+```sh
+yarn db:dev:up
+```
+4. Start the server
+```sh
+yarn start:dev
+```
+
+Now you need to put the app up and running. To do that, follow the next steps:
+1. Go to the app folder
+```sh
+cd client
+```
+
+2. Install the dependencies
+```sh
+yarn
+```
+
+3. Start the app on iOS or Android
+```sh
+yarn ios
+```
+
+or
+
+```sh
+yarn android
+```
 
 ## Contact
 
