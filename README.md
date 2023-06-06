@@ -34,7 +34,7 @@ Follow the next steps to run the project
 
 ### Prerequisites
 
-You must have node, npm, yarn and docker installed on your machine
+You must have node, npm, yarn and docker installed on your machine. You also must have configured React Native to run from your device to your target device ( https://reactnative.dev/docs/environment-setup ) 
 
 ### Running the project
 
@@ -47,16 +47,17 @@ cd server
 ```sh
 yarn
 ```
-3. Start the database container
+3. Open Docker
+4. Start the database container
 ```sh
-yarn db:dev:up
+yarn db:dev:restart
 ```
-4. Start the server
+5. Start the server
 ```sh
 yarn start:dev
 ```
 
-Now you need to put the app up and running. To do that, follow the next steps:
+Now you need to open a new terminal to put the app up and running. To do that, follow the next steps:
 1. Go to the app folder
 ```sh
 cd client
@@ -67,16 +68,27 @@ cd client
 yarn
 ```
 
-3. Start the app on iOS or Android
+3. Install the pods
+```sh
+cd ios && pod install && cd ..
+```
+
+4. Edit src/consts/IP_address.ts and change the IP address to your machine's IP address
+
+5. Start the app on iOS
 ```sh
 yarn ios
 ```
 
-or
+6. Open your android emulator and start the app on Android
 
 ```sh
 yarn android
 ```
+
+### Important Notes
+
+As soon as you create your account another test account will be created with the email "test@gmail.com" and the password "Password123" so you can test the transfer feature.
 
 ## Contact
 

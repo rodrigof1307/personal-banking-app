@@ -14,6 +14,7 @@ import {useNavigation} from '@react-navigation/core';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {GoBackButton} from '../components/GoBackButton';
 import {UserContext} from '../context/UserContext';
+import {IP_ADDRESS} from '../consts/IP_address';
 
 type FormData = {
   name: string;
@@ -42,7 +43,11 @@ export const Register = () => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const {confirmPassword, ...rest} = data;
     try {
-      const res = await axios.post('http://localhost:3333/auth/register', rest);
+      const res = await axios.post(
+        //@ts-ignore
+        `http://${IP_ADDRESS}:3333/auth/register`,
+        rest,
+      );
       if (res.status === 201) {
         navigation.navigate('BottomTab');
         setUser(res.data);
@@ -115,6 +120,7 @@ export const Register = () => {
             autoCapitalize="none"
             secureTextEntry
             placeholderTextColor={colors.accentPlaceholder}
+            textContentType="none"
           />
         )}
         name="password"

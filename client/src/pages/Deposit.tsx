@@ -9,6 +9,7 @@ import axios from 'axios';
 import {useNavigation} from '@react-navigation/core';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {GoBackButton} from '../components/GoBackButton';
+import {IP_ADDRESS} from '../consts/IP_address';
 
 type FormData = {
   amount: string;
@@ -31,12 +32,12 @@ export const Deposit = () => {
         amount: parseFloat(data.amount),
       };
       const res = await axios.post(
-        'http://localhost:3333/transactions/deposit',
+        `http://${IP_ADDRESS}:3333/transactions/deposit`,
         dto,
       );
       if (res.status === 201) {
         const newUser = await axios.get(
-          'http://localhost:3333/users/' + user?.id,
+          `http://${IP_ADDRESS}:3333/users/` + user?.id,
         );
         setUser(newUser.data);
         navigation.navigate('Home');

@@ -8,6 +8,7 @@ import {GoBackButton} from '../components/GoBackButton';
 import {useQuery} from 'react-query';
 import {useFocusEffect} from '@react-navigation/core';
 import {colors} from '../consts/colors';
+import {IP_ADDRESS} from '../consts/IP_address';
 
 type ExtendedTransaction = Transaction & {
   sender?: UserAccount;
@@ -19,7 +20,7 @@ export const Transactions = () => {
   const fetchTransactions = async () => {
     try {
       const res = await axios.get(
-        'http://localhost:3333/transactions/all/' + user?.id,
+        `http://${IP_ADDRESS}:3333/transactions/all/` + user?.id,
       );
       return res.data as ExtendedTransaction[];
     } catch (error) {

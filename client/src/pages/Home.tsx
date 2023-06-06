@@ -8,7 +8,6 @@ import {getStatusBarHeight} from 'react-native-iphone-x-helper';
 import {useCountUp} from 'use-count-up';
 import {useNavigation} from '@react-navigation/core';
 import {StackNavigationProp} from '@react-navigation/stack';
-import Icon from 'react-native-vector-icons/Entypo';
 
 export const Home = () => {
   const {user, setUser} = React.useContext(UserContext);
@@ -33,7 +32,7 @@ export const Home = () => {
 
   const handleLogout = () => {
     setUser(undefined);
-    navigation.navigate('Login');
+    navigation.navigate('InitialPage');
   };
 
   return (
@@ -43,7 +42,7 @@ export const Home = () => {
           Hi <Text style={{color: colors.accent}}>{user?.name}</Text>
         </Text>
         <TouchableOpacity onPress={handleLogout} activeOpacity={0.75}>
-          <Icon name={'log-out'} size={24} color={colors.clear} />
+          <Text style={styles.logout}>Logout</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.balanceWrapper}>
@@ -87,6 +86,12 @@ const styles = StyleSheet.create({
     fontSize: 32,
     fontFamily: fonts.regular,
     textAlign: 'left',
+  },
+
+  logout: {
+    fontSize: 20,
+    color: colors.error,
+    fontFamily: fonts.medium,
   },
 
   balanceWrapper: {

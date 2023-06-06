@@ -1,6 +1,11 @@
 import React from 'react';
-import {TouchableOpacity, StyleSheet, View, Text} from 'react-native';
-import Icon from 'react-native-vector-icons/Entypo';
+import {
+  TouchableOpacity,
+  StyleSheet,
+  View,
+  Text,
+  Dimensions,
+} from 'react-native';
 import {useNavigation} from '@react-navigation/core';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {colors} from '../consts/colors';
@@ -24,7 +29,7 @@ export const GoBackButton = ({onPress, title = ''}: GoBackButtonProps) => {
       <TouchableOpacity
         onPress={onPress ? onPress : handleGoBack}
         style={styles.buttonStyle}>
-        <Icon name="chevron-left" size={40} color={colors.clear} />
+        <Text style={styles.goBackText}>{'Go Back'}</Text>
       </TouchableOpacity>
       <Text style={styles.textStyle}>{title}</Text>
       <View style={styles.buttonStyle} />
@@ -34,18 +39,24 @@ export const GoBackButton = ({onPress, title = ''}: GoBackButtonProps) => {
 
 const styles = StyleSheet.create({
   goBack: {
-    width: '100%',
+    width: Dimensions.get('window').width,
     position: 'absolute',
     top: getStatusBarHeight() + 15,
     left: 0,
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'flex-start',
+    justifyContent: 'space-between',
     alignItems: 'center',
   },
   buttonStyle: {
-    width: 50,
+    width: 80,
     paddingHorizontal: 5,
+  },
+  goBackText: {
+    fontSize: 16,
+    color: colors.clear,
+    textAlign: 'center',
+    fontFamily: fonts.medium,
   },
   textStyle: {
     flex: 1,

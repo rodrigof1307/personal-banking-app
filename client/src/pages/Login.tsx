@@ -14,6 +14,7 @@ import {useNavigation} from '@react-navigation/core';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {GoBackButton} from '../components/GoBackButton';
 import {UserContext} from '../context/UserContext';
+import {IP_ADDRESS} from '../consts/IP_address';
 
 type FormData = {
   email: string;
@@ -33,13 +34,17 @@ export const Login = () => {
 
   const onSubmit = async (data: FormData) => {
     try {
-      const res = await axios.post('http://localhost:3333/auth/login', data);
+      const res = await axios.post(
+        `http://${IP_ADDRESS}:3333/auth/login`,
+        data,
+      );
       if (res.status === 200) {
         navigation.navigate('BottomTab');
         setUser(res.data);
         reset();
       }
     } catch (error) {
+      console.log(error);
       Alert.alert('Error', 'Wrong Credentials');
     }
   };

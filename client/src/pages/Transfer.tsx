@@ -18,6 +18,7 @@ import axios from 'axios';
 import {UserContext} from '../context/UserContext';
 import {useNavigation} from '@react-navigation/core';
 import {StackNavigationProp} from '@react-navigation/stack';
+import {IP_ADDRESS} from '../consts/IP_address';
 
 type FormData = {
   email?: string;
@@ -55,12 +56,12 @@ export const Transfer = () => {
         dto = {...dto, receiverEmail: data.email};
       }
       const res = await axios.post(
-        'http://localhost:3333/transactions/send',
+        `http://${IP_ADDRESS}:3333/transactions/send`,
         dto,
       );
       if (res.status === 201) {
         const newUser = await axios.get(
-          'http://localhost:3333/users/' + user?.id,
+          `http://${IP_ADDRESS}:3333/users/` + user?.id,
         );
         setUser(newUser.data);
         navigation.navigate('Home');
