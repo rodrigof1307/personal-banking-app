@@ -43,7 +43,7 @@ export const Home = () => {
           Hi <Text style={{color: colors.accent}}>{user?.name}</Text>
         </Text>
         <TouchableOpacity onPress={handleLogout} activeOpacity={0.75}>
-          <Icon name={'log-out'} size={24} color={'red'} />
+          <Icon name={'log-out'} size={24} color={colors.clear} />
         </TouchableOpacity>
       </View>
       <View style={styles.balanceWrapper}>
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: 'white',
+    backgroundColor: colors.secondary,
   },
 
   header: {
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
   },
 
   text: {
-    color: colors.primary,
+    color: colors.clear,
     fontSize: 32,
     fontFamily: fonts.regular,
     textAlign: 'left',
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
   },
 
   balanceLabel: {
-    color: colors.primary,
+    color: colors.clear,
     fontSize: 24,
     fontFamily: fonts.regular,
   },

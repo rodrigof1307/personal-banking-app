@@ -11,6 +11,7 @@ export class UserService {
         id: id,
       },
     });
+    delete user.passwordHash;
 
     if (!user) {
       throw new ForbiddenException('User not found');
@@ -20,6 +21,10 @@ export class UserService {
   }
 
   async getUsers() {
-    return await this.prisma.userAccount.findMany();
+    const users = await this.prisma.userAccount.findMany();
+    users.forEach((user) => {
+      delete user.passwordHash;
+    });
+    return users;
   }
 }

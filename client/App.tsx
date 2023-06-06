@@ -6,14 +6,13 @@
  */
 
 import React from 'react';
-import {StatusBar, useColorScheme} from 'react-native';
+import {StatusBar} from 'react-native';
 import {QueryClient, QueryClientProvider} from 'react-query';
 import {MainRoutes} from './src/routes/main.routes';
 import {NavigationContainer} from '@react-navigation/native';
 import {UserContext} from './src/context/UserContext';
 
 function App(): JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
   const [user, setUser] = React.useState<UserAccount | undefined>(undefined);
 
   const queryClient = new QueryClient();
@@ -22,7 +21,7 @@ function App(): JSX.Element {
     <NavigationContainer>
       <UserContext.Provider value={{user, setUser}}>
         <QueryClientProvider client={queryClient}>
-          <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+          <StatusBar barStyle={'light-content'} />
           <MainRoutes />
         </QueryClientProvider>
       </UserContext.Provider>

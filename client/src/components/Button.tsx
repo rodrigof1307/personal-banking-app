@@ -19,11 +19,15 @@ const Button = ({
   scheme = 'primary',
   onPress,
 }: ButtonProps) => {
-  const backgroundColor =
-    scheme === 'primary' ? colors.primaryButton : colors.secondaryButton;
-  const color = 'white';
+  const backgroundColor = scheme === 'primary' ? colors.primary : 'transparent';
+  const color = scheme === 'primary' ? 'white' : colors.primary;
+  const borderColor = scheme === 'primary' ? 'transparent' : colors.primary;
 
-  const buttonStyles = [styles.button, styles[size], {backgroundColor}];
+  const buttonStyles = [
+    styles.button,
+    styles[size],
+    {backgroundColor, borderColor},
+  ];
 
   const textStyles = [
     styles.text,
@@ -31,7 +35,7 @@ const Button = ({
     size === 'small'
       ? {fontSize: 12}
       : size === 'large' || size === 'full'
-      ? {fontSize: 20}
+      ? {fontSize: 22}
       : {fontSize: 16},
   ];
 
@@ -49,6 +53,7 @@ const styles = StyleSheet.create({
   button: {
     justifyContent: 'center',
     alignItems: 'center',
+    borderWidth: 3, // Added border
   },
   text: {
     fontFamily: fonts.semiBold,

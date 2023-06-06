@@ -43,7 +43,7 @@ export class TransactionService {
     }
 
     if (receiverEmail) {
-      // Transactions to other users are settled immediately
+      // Transactions sent to other users are settled immediately
 
       const receiver = await this.prisma.userAccount.findUnique({
         where: {
@@ -68,7 +68,7 @@ export class TransactionService {
         },
       });
     } else {
-      // Transactions to other banks remain pending
+      // Transactions sent to other banks remain pending
 
       await this.changeBalance(senderID, user.balance - amount);
 

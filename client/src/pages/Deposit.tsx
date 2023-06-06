@@ -50,7 +50,7 @@ export const Deposit = () => {
 
   return (
     <View style={styles.container}>
-      <GoBackButton />
+      <GoBackButton title="Deposit" />
       <View style={styles.formsContainer}>
         <Controller
           control={control}
@@ -62,6 +62,7 @@ export const Deposit = () => {
               value={value}
               placeholder="Amount"
               keyboardType="numeric"
+              placeholderTextColor={colors.accentPlaceholder}
             />
           )}
           name="amount"
@@ -86,7 +87,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'white',
+    backgroundColor: colors.secondary,
   },
 
   formsContainer: {
@@ -112,11 +113,11 @@ const styles = StyleSheet.create({
     color: colors.accent,
   },
   inputError: {
-    borderColor: 'red',
+    borderColor: colors.error,
   },
   errorText: {
     marginBottom: 10,
-    color: 'red',
+    color: colors.error,
     fontSize: 14,
   },
 });

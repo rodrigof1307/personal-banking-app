@@ -8,7 +8,8 @@ import {
   Alert,
 } from 'react-native';
 import Button from '../components/Button';
-import Carousel from 'react-native-snap-carousel';
+// @ts-ignore
+import Carousel from 'react-native-new-snap-carousel';
 import {useForm, Controller} from 'react-hook-form';
 import {getStatusBarHeight} from 'react-native-iphone-x-helper';
 import {colors} from '../consts/colors';
@@ -84,7 +85,7 @@ export const Transfer = () => {
     if (index === 0) {
       return (
         <View style={styles.container}>
-          <GoBackButton />
+          <GoBackButton title="Transfer" />
           <View style={styles.buttonContainer}>
             <Button
               title="Send to Email"
@@ -103,7 +104,7 @@ export const Transfer = () => {
 
     return (
       <View style={styles.container}>
-        <GoBackButton onPress={snapToPrev} />
+        <GoBackButton onPress={snapToPrev} title="Transfer" />
         <View style={styles.formsContainer}>
           {transactionType === 'email' && (
             <>
@@ -119,6 +120,7 @@ export const Transfer = () => {
                     keyboardType="email-address"
                     autoCapitalize="none"
                     autoCorrect={false}
+                    placeholderTextColor={colors.accentPlaceholder}
                   />
                 )}
                 name="email"
@@ -176,6 +178,7 @@ export const Transfer = () => {
                 onChangeText={onChange}
                 value={value}
                 keyboardType="numeric"
+                placeholderTextColor={colors.accentPlaceholder}
               />
             )}
             name="amount"
@@ -215,7 +218,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'white',
+    backgroundColor: colors.secondary,
   },
 
   buttonContainer: {

@@ -46,7 +46,7 @@ export const Login = () => {
 
   return (
     <KeyboardAvoidingView style={styles.container} behavior={'height'}>
-      <GoBackButton />
+      <GoBackButton title="Login" />
       <Controller
         control={control}
         render={({field: {onChange, onBlur, value}}) => (
@@ -59,6 +59,7 @@ export const Login = () => {
             keyboardType="email-address"
             autoCapitalize="none"
             autoCorrect={false}
+            placeholderTextColor={colors.accentPlaceholder}
           />
         )}
         name="email"
@@ -80,6 +81,7 @@ export const Login = () => {
             placeholder="Password"
             autoCapitalize="none"
             secureTextEntry
+            placeholderTextColor={colors.accentPlaceholder}
           />
         )}
         name="password"
@@ -88,7 +90,7 @@ export const Login = () => {
       />
       <Text style={styles.errorText}>{errors.password?.message ?? ''}</Text>
 
-      <Button title="Submit" size="full" onPress={handleSubmit(onSubmit)} />
+      <Button title="Login" size="full" onPress={handleSubmit(onSubmit)} />
     </KeyboardAvoidingView>
   );
 };
@@ -98,7 +100,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     padding: 20,
-    backgroundColor: 'white',
+    backgroundColor: colors.secondary,
   },
   input: {
     height: 50,

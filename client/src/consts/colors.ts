@@ -1,8 +1,9 @@
 /* The colors we use */
 export const colors = {
-  primary: '#031930',
-  secondary: '#ddedfd',
-  primaryButton: '#82bbf7',
-  secondaryButton: '#cfe5fc',
-  accent: '#6aaef6',
+  primary: '#2e5fc2',
+  secondary: '#0f110f',
+  clear: '#f0f0f0',
+  accent: '#00c7fc',
+  accentPlaceholder: '#9be6ff',
+  error: '#f44336',
 };

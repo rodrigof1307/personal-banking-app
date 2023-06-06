@@ -59,7 +59,7 @@ export const Register = () => {
       style={styles.container}
       behavior={'height'}
       keyboardVerticalOffset={-60}>
-      <GoBackButton />
+      <GoBackButton title="Register" />
 
       <Controller
         control={control}
@@ -70,6 +70,7 @@ export const Register = () => {
             onChangeText={onChange}
             value={value}
             placeholder="Name"
+            placeholderTextColor={colors.accentPlaceholder}
           />
         )}
         name="name"
@@ -90,6 +91,7 @@ export const Register = () => {
             keyboardType="email-address"
             autoCapitalize="none"
             autoCorrect={false}
+            placeholderTextColor={colors.accentPlaceholder}
           />
         )}
         name="email"
@@ -112,6 +114,7 @@ export const Register = () => {
             placeholder="Password"
             autoCapitalize="none"
             secureTextEntry
+            placeholderTextColor={colors.accentPlaceholder}
           />
         )}
         name="password"
@@ -141,6 +144,7 @@ export const Register = () => {
             value={value}
             placeholder="Confirm Password"
             secureTextEntry
+            placeholderTextColor={colors.accentPlaceholder}
           />
         )}
         name="confirmPassword"
@@ -165,6 +169,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingHorizontal: 20,
     paddingVertical: 0,
+    backgroundColor: colors.secondary,
   },
   input: {
     height: 50,

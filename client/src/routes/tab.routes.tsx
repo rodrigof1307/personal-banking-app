@@ -33,7 +33,7 @@ export const BottomTabRoutes = () => {
       screenOptions={({route}) => ({
         tabBarIcon: ({color, size}) => TabIcon({route, color, size}),
         tabBarActiveTintColor: colors.accent,
-        tabBarInactiveTintColor: colors.secondaryButton,
+        tabBarInactiveTintColor: colors.accentPlaceholder,
         headerShown: false,
         tabBarLabelStyle: {
           fontFamily: fonts.semiBold,
@@ -41,6 +41,7 @@ export const BottomTabRoutes = () => {
         },
         tabBarStyle: {
           paddingTop: 10,
+          backgroundColor: colors.secondary,
         },
       })}>
       <Tab.Screen

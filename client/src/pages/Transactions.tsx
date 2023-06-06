@@ -7,6 +7,7 @@ import {TransactionItem} from '../components/TransactionItem';
 import {GoBackButton} from '../components/GoBackButton';
 import {useQuery} from 'react-query';
 import {useFocusEffect} from '@react-navigation/core';
+import {colors} from '../consts/colors';
 
 type ExtendedTransaction = Transaction & {
   sender?: UserAccount;
@@ -34,7 +35,7 @@ export const Transactions = () => {
 
   return (
     <View style={styles.container}>
-      <GoBackButton />
+      <GoBackButton title="Transactions" />
       <FlatList
         data={data}
         style={styles.flatListContainer}
@@ -64,8 +65,8 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'white',
-    paddingTop: getStatusBarHeight() + 60,
+    backgroundColor: colors.secondary,
+    paddingTop: getStatusBarHeight() + 70,
   },
 
   flatListContainer: {

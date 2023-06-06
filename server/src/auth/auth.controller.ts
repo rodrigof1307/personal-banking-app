@@ -6,14 +6,20 @@ import { RegisterDto, LoginDto } from './dto';
 export class AuthController {
   constructor(private authService: AuthService) {}
 
+  // This route handles the registration of a new user
   @Post('register')
-  register(@Body() dto: RegisterDto) {
-    return this.authService.register(dto);
+  async register(@Body() dto: RegisterDto) {
+    const user = await this.authService.register(dto);
+    delete user.passwordHash;
+    return user;
   }
 
+  // This route handles the login of a user
   @HttpCode(HttpStatus.OK)
   @Post('login')
-  login(@Body() dto: LoginDto) {
-    return this.authService.login(dto);
+  async login(@Body() dto: LoginDto) {
+    const user = await this.authService.login(dto);
+    delete user.passwordHash;
+    return user;
   }
 }

@@ -19,11 +19,13 @@ export const InitialPage = () => {
 
   return (
     <SafeAreaView style={styles.background}>
-      <Text style={styles.title}>Banking Made Easy</Text>
-      <Text style={styles.description}>
-        Welcome to the future of finance at Swift Bank. Manage your finances
-        with ease anywhere at any time.
-      </Text>
+      <View style={styles.textContainer}>
+        <Text style={styles.title}>Banking Made Easy</Text>
+        <Text style={styles.description}>
+          Welcome to the future of finance at Swift Bank. Manage your finances
+          with ease anywhere at any time.
+        </Text>
+      </View>
       <View style={styles.buttonContainer}>
         <Button title="Login" size="full" onPress={handleLogin} />
         <Button
@@ -42,12 +44,23 @@ const styles = StyleSheet.create({
     flex: 1,
     display: 'flex',
     flexDirection: 'column',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: colors.secondary,
+  },
+
+  textContainer: {
+    paddingTop: 16,
+    width: '95%',
+    display: 'flex',
+    flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'white',
+    gap: 8,
   },
 
   buttonContainer: {
+    paddingBottom: 16,
     width: '90%',
     display: 'flex',
     flexDirection: 'column',
@@ -59,9 +72,9 @@ const styles = StyleSheet.create({
   title: {
     width: '90%',
 
-    color: colors.primary,
+    color: colors.accent,
     fontFamily: fonts.bold,
-    fontSize: 32,
+    fontSize: 36,
     textAlign: 'left',
   },
 
@@ -71,9 +84,9 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 40,
 
-    color: colors.primary,
+    color: colors.clear,
     fontFamily: fonts.regular,
-    fontSize: 18,
+    fontSize: 20,
     textAlign: 'left',
   },
 });

@@ -11,6 +11,18 @@ export class AuthService {
   async register(dto: RegisterDto) {
     const hash = await argon.hash(dto.password);
     try {
+      // If there are no other users yet this line creates a test account so that users can interact
+      if ((await this.prisma.userAccount.findMany()).length === 0) {
+        const newHash = await argon.hash('Password123');
+        await this.prisma.userAccount.create({
+          data: {
+            email: 'test@gmail.com',
+            passwordHash: newHash,
+            name: 'Test Account',
+          },
+        });
+      }
+
       const user = await this.prisma.userAccount.create({
         data: {
           email: dto.email,
